@@ -1,5 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const Cart = require("./models/cart");
 
 const { PORT } = require("./config");
 const logger = require("./utils/logger");
@@ -37,6 +38,7 @@ app.use((request, response) => {
     headTitle: "404",
     menuLinks: MENU_LINKS,
     activeLinkPath: "",
+    cartCount: Cart.getProductsQuantity(),
   });
   logger.getErrorLog(url);
 });
